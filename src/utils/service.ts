@@ -1,3 +1,5 @@
+import { Post } from '../types/Post';
+
 export const fetchPosts = async ({
   page,
   limit
@@ -9,7 +11,7 @@ export const fetchPosts = async ({
     `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`
   );
 
-  const data = await response.json();
+  const data = (await response.json()) as Post[];
 
   return data;
 };

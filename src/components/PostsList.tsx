@@ -1,11 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { fetchPosts } from '../utils/service';
-
-type Post = {
-  id: string;
-  title: string;
-  body: string;
-};
+import { Post } from '../types/Post';
 
 export const PostsList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -42,7 +37,7 @@ export const PostsList = () => {
   );
 
   useEffect(() => {
-    loadMorePosts();
+    void loadMorePosts();
   }, [loadMorePosts]);
 
   return (
